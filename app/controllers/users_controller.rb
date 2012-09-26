@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
+
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "Welcome to the Sample App!"
@@ -15,5 +16,10 @@ class UsersController < ApplicationController
       else
       render 'new'
     end
+  end
+  
+  def destroy
+    sign_out
+    redirect_to root_url
   end
 end
